@@ -84,17 +84,6 @@ public class Registration {
         setLastName(this.reader.nextLine());
         System.out.println("please enter your address: ");
         setAddress(this.reader.nextLine());
-        System.out.println("registered successfully");
     }
 
-    @Override
-    public String toString() {
-        return "Registration{" +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
 }

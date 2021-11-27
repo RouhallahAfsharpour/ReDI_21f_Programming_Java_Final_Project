@@ -44,7 +44,9 @@ public class GroceriesManagement {
                 break;
             case 2:
                 //RA: Register as new user
-                //this.register();
+                Registration reg = new Registration();//RA: create a new instance of Registration with those inputs
+                reg.register();
+                reg.toString();
                 break;
             case 3:
                 //RA: Quit

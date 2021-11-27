@@ -96,7 +96,7 @@ public abstract class Groceris {
             run();
         }
         else if(choice == 2){
-            Main.launch();
+            Test.launch();
         }
     }
 

@@ -1,4 +1,4 @@
-package com.company;
+package GroceriesLists;
 import java.io.IOException;
 
 public class GroceriesApp {

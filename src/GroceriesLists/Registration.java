@@ -1,4 +1,4 @@
-package com.company;
+package GroceriesLists;
 import java.util.Scanner;
 
 //RA:This class should be modified later

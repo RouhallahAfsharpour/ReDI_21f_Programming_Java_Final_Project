@@ -1,5 +1,4 @@
 package com.company;
-
 import java.util.Scanner;
 
 //RA:This class should be modified later

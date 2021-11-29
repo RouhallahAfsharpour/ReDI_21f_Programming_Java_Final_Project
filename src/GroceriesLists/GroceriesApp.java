@@ -6,7 +6,9 @@ public class GroceriesApp {
     public static void main(String[] args) throws IOException {
         GroceriesManagement app = new GroceriesManagement();
 
-        // Welcome User
+        //RA: create an admin
+        app.createAdmin();
+        //RA: Welcome User
         app.greeting();
 
         //RA: Get the user's choice of action and perform action

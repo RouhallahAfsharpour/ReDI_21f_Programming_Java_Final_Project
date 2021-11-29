@@ -13,17 +13,19 @@ public class Registration {
     private String firstName;
     private String lastName;
     private String address;
+    private String userType="user";
 
     public Registration() {
     }
 
     //RA: a constructor for the user information
-    public Registration(String email, String password, String firstName, String lastName, String address) {
+    public Registration(String email, String password, String firstName, String lastName, String address, String userType) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.userType = userType;
     }
 
     //RA: getters and setters for user information
@@ -63,6 +65,14 @@ public class Registration {
         this.lastName = lastName;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -83,6 +93,16 @@ public class Registration {
         setLastName(this.reader.nextLine());
         System.out.println("please enter your address: ");
         setAddress(this.reader.nextLine());
+        setUserType("user");
     }
 
+    @Override
+    public String toString() {
+        return  " [email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", userType='" + userType  +"]"+
+                '\n';
+    }
 }

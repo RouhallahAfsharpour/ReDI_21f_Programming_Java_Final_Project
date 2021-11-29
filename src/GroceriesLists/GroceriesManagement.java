@@ -45,8 +45,12 @@ public class GroceriesManagement {
             case 1:
                 //RA: Login as an already registered user
                 Login log = new Login();
-                if(log.doLogin(read())){
-                    //go to luay's classes for shoping, etc
+                int optionChosen = log.doLogin(read());
+                if(optionChosen==0){
+                    //RA:go to normal user area: Luay's classes for shopping, etc
+                } else if(optionChosen==1){
+                    //RA: go to admin area
+                    adminArea();
                 }
                 break;
             case 2:
@@ -109,13 +113,23 @@ public class GroceriesManagement {
         try {
             FileWriter fileWriter = new FileWriter(this.path,true);
             fileWriter.append("\n");
-            fileWriter.append(reg.getEmail()+","+reg.getPassword()+","+reg.getFirstName()+","+reg.getLastName()+","+reg.getAddress());
+            fileWriter.append(reg.getEmail()+","+reg.getPassword()+","+reg.getFirstName()+","+reg.getLastName()+","+reg.getAddress()+","+reg.getUserType());
             fileWriter.flush();
             fileWriter.close();
             System.out.println("registered successfully");
         } catch (IOException e) {
             e.getMessage();
         }
+    }
+
+    //RA: create a default admin
+    public void createAdmin() throws IOException {
+        if (!checkEmail("admin")){
+            Admin defaultAdmin = new Admin("admin","admin","","","","admin");
+            registerNewUser(defaultAdmin);
+        }
+
+
     }
 
     //RA: this method reads all data stored in registeredUsers file and put them in a list
@@ -128,7 +142,7 @@ public class GroceriesManagement {
             String line = "";
             while ((line = fileReader.readLine()) != null) {
                 String[] elements = line.split(",");
-                list.add(new Registration(elements[0], elements[1], elements[2], elements[3], elements[4]));
+                list.add(new Registration(elements[0], elements[1], elements[2], elements[3], elements[4],elements[5]));
             }
         }catch (IOException e){
             e.getMessage();
@@ -169,6 +183,49 @@ public class GroceriesManagement {
             }
         }
         return "The input was invalid!";
+    }
+
+    //RA: This is an area for admin
+    public void adminArea() throws IOException {
+        int adminChoice=0;
+        while (adminChoice<1 || adminChoice>3){
+            System.out.println("Please choose 1, 2, or 3 for:");
+            System.out.println("[1. See the list of users, 2.Make a user admin, 3. delete a user, 4.See the orders of a user]");
+            adminChoice = this.reader.nextInt();
+            if (adminChoice==1){
+                System.out.println(read().toString());
+            }else if(adminChoice==2 || adminChoice==3){
+                System.out.println("Please type the email of the user: ");
+                String emailOfUser = this.reader.nextLine();
+                emailOfUser += this.reader.next();
+                List<Registration> listOfCurrentUsers = read();
+                for (Registration registered : listOfCurrentUsers){
+                    /*if (registered.getEmail().equals(emailOfUser)){
+                        try {
+                            FileWriter fileWriter = new FileWriter(this.path,true);
+                            fileWriter.append("\n");
+                        if (adminChoice==2){
+                            registered.setUserType("admin");
+                        } else if(adminChoice==3){
+                            listOfCurrentUsers.remove(registered);
+                        }
+
+                            //fileWriter.append(reg.getEmail()+","+reg.getPassword()+","+reg.getFirstName()+","+reg.getLastName()+","+reg.getAddress()+","+reg.getUserType());
+                            fileWriter.flush();
+                            fileWriter.close();
+                        } catch (IOException e) {
+                            e.getMessage();
+                        }
+                    }*/
+                }
+            } else {
+                System.out.println("under development!");
+            }
+        }
+
+
+
+
     }
 
 }

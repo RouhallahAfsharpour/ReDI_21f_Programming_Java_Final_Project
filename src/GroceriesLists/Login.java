@@ -10,7 +10,7 @@ public class Login {
     //RA: for all inputs through terminal we define a scanner once
     private final Scanner reader = new Scanner(System.in);
 
-    public boolean doLogin(List<Registration> listOfRegisteredUsers) throws IOException {
+    public int doLogin(List<Registration> listOfRegisteredUsers) throws IOException {
         System.out.println("please enter your email address: ");
         this.emailForLogin = this.reader.nextLine();
         System.out.println("please enter your password: ");
@@ -19,17 +19,21 @@ public class Login {
     }
 
     //RA: check if the given password and email match the information already available in stored data
-    public boolean checkRegistration(List<Registration> listOfRegisteredUsers,String email, String password) throws IOException {
+    public int checkRegistration(List<Registration> listOfRegisteredUsers,String email, String password) throws IOException {
         for (Registration reg : listOfRegisteredUsers){
             if (reg.getEmail().equals(email) && reg.getPassword().equals(password)){
                 System.out.println("welcome " + reg.getFirstName());
-                return true;
+                if (reg.getUserType().equals("admin")){
+                    return 1;
+                }else {
+                    return 0;
+                }
             } else if (reg.getEmail().equals(email) && !reg.getPassword().equals(password)){
                 System.out.println("The password is not correct!");
                 System.out.println(reg.getEmail()+" is already registered, try to restore the password!");
-                return false;
+                return -1;
             }
         }
-        return false;
+        return -1;
     }
 }

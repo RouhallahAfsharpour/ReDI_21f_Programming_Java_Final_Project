@@ -1,4 +1,5 @@
-email,password,firstName,lastName,address
+email,password,firstName,lastName,address,userType
 abadanastro@gmail.com,12345,Ruli,Afshar,Berlinerstr2,admin
-luay@yahoo.com,1232313,luay,aljuma,berlin2,user
 admin,admin,,,,admin
+
+luay@yahoo.com,223344,Luay,Al-jumaa,berlinerstr1,user

@@ -188,9 +188,9 @@ public class GroceriesManagement {
     //RA: This is an area for admin
     public void adminArea() throws IOException {
         int adminChoice=0;
-        while (adminChoice<1 || adminChoice>3){
+        while (adminChoice!=5){
             System.out.println("Please choose 1, 2, or 3 for:");
-            System.out.println("[1. See the list of users, 2.Make a user admin, 3. delete a user, 4.See the orders of a user]");
+            System.out.println("[1. See the list of users, 2.Make a user admin, 3. delete a user, 4.See the orders of a user, 5. Log out]");
             adminChoice = this.reader.nextInt();
             if (adminChoice==1){
                 System.out.println(read().toString());
@@ -200,23 +200,30 @@ public class GroceriesManagement {
                 emailOfUser += this.reader.next();
                 List<Registration> listOfCurrentUsers = read();
                 for (Registration registered : listOfCurrentUsers){
-                    /*if (registered.getEmail().equals(emailOfUser)){
-                        try {
-                            FileWriter fileWriter = new FileWriter(this.path,true);
-                            fileWriter.append("\n");
+                    if (registered.getEmail().equals(emailOfUser)){
+
                         if (adminChoice==2){
                             registered.setUserType("admin");
                         } else if(adminChoice==3){
                             listOfCurrentUsers.remove(registered);
                         }
-
-                            //fileWriter.append(reg.getEmail()+","+reg.getPassword()+","+reg.getFirstName()+","+reg.getLastName()+","+reg.getAddress()+","+reg.getUserType());
-                            fileWriter.flush();
-                            fileWriter.close();
-                        } catch (IOException e) {
-                            e.getMessage();
-                        }
-                    }*/
+                    }
+                }
+                try {
+                    //RA: clearing the content
+                    new FileWriter(this.path, false).close();
+                    //RA: updating the content
+                    FileWriter fileWriter = new FileWriter(this.path,true);
+                    fileWriter.append("email,password,firstName,lastName,address,userType");
+                    fileWriter.append("\n");
+                    for (Registration user : listOfCurrentUsers) {
+                        fileWriter.append(user.getEmail() + "," + user.getPassword() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getAddress() + "," + user.getUserType());
+                        fileWriter.append("\n");
+                    }
+                    fileWriter.flush();
+                    fileWriter.close();
+                } catch (IOException e) {
+                    e.getMessage();
                 }
             } else {
                 System.out.println("under development!");

@@ -1,14 +1,24 @@
 package GroceriesLists;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
 public abstract class Groceris {
 
     // this is the Last List of chosen Groceries which the user chosed
-    List<Groceris> shoppingCart = new ArrayList<>();
+   // List<Map<Groceris,Float>> shoppingCart = new ArrayList<>();
+
+   //  Map<Groceris,Float> shoppingCart = new HashMap<>();
+
+
+
 
     // the First properties of the Groceries
+
+    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    static LocalDateTime now = LocalDateTime.now();
+
 
     private String name;
     private String category;
@@ -58,24 +68,24 @@ public abstract class Groceris {
     }
 
     // this method allows the User to choose between the Groceries and add them to the shopping cart
-    public List<Groceris> addToshoppingCart(List<Groceris> shoppingC ,HashMap<Integer,Groceris> map,Groceris g){
+    public  void addToshoppingCart(HashMap<Integer,Groceris> map){
 
         // asking the user what he want to by
         System.out.println(" Please choose what you want to by : ");
         int num = this.sc.nextInt();
 
-        // when he chose someting he will get the Information of the Grocerie he chosed
+        // when he chose something he will get the Information of the Grocerie he chosed
         if(map.containsKey(num) ){
             System.out.println(map.get(num).infoToString()+ "\n");
 
             // here he should decid if he want to by it and add it to the shopping cart or not
-            System.out.println(" would you like to add this product to the shoping cart? (please choose a number 1 or 2 )\n" +
+            System.out.println("would you like to add this product to the shoping cart? (please choose a number 1 or 2 )\n" +
                     "1. yes please \n" +
                     "2. no thanks \n");
             int choice = this.sc.nextInt();
             // if he press number 1 the program will add to the shopping cart and ask again if he wanna chose something else
             if(choice == 1){
-                shoppingC.add(map.get(num));
+                Test.shoppingCart.put(map.get(num).getName(),map.get(num).getPrice());
                 askUserAgain();
             }
             // he press 2 it will ask hem if he want to chose another product
@@ -84,28 +94,37 @@ public abstract class Groceris {
             }
 
         }
-        return shoppingC;
+        // return shoppingCart;
     }
 
     // this Method asks the user one more time if he want to add another product
     public void askUserAgain(){
-        System.out.println(" would you like to add another  product? (please choose a number 1 or 2 )\n" +
+        System.out.println("would you like to add another  product from this Category? (please choose a number 1 or 2 )\n" +
                 "1. yes please \n" +
-                "2. no thanks, go to Main Menu \n");
+                "2. no thanks, go to Main Menu \n" +
+                "3. Finish, go to Payment");
         int choice = this.sc.nextInt();
         if(choice == 1){
             run();
         }
         else if(choice == 2){
             Test.launchCategorys();
+
+        }
+        else if(choice == 3){
+            printShoppingCart();
+        }
+        else{
+            System.out.println(" invalid Input! please choose one of the numbers 1,2,3! ");
+            askUserAgain();
         }
     }
 
     // this method prints the shopping cart at the end which includes everything he chosed
     public void printLast(){
-        for(Groceris elm : shoppingCart) {
-            System.out.println(elm.toString());
-        }
+      //  for(Groceris elm : shoppingCart) {
+        //    System.out.println(elm.toString());
+        //}
     }
 
 
@@ -131,6 +150,30 @@ public abstract class Groceris {
     public Date getExpirationsDate() {
         return expirationsDate;
     }
+
+    // printing the Last Bill this method contains the current date
+    public static void printShoppingCart(){
+
+
+
+        System.out.println("\n\n_________________________________________________ \n\n");
+        System.out.println("      . . . . . . . ");
+        System.out.println("      :   Bill    :      " + " current date : " + dtf.format(now));
+        System.out.println("      . . . . . . . ");
+        System.out.println(" \n ____________________ \n");
+        System.out.println();
+        float count = 0;
+        for (Map.Entry<String,Float> entry : Test.shoppingCart.entrySet()) {
+            System.out.println(" | "+entry.getKey()+" :    "+entry.getValue() + " $ ");
+            count += entry.getValue();
+        }
+        System.out.println("\n  ------------------");
+        System.out.println("  | Total : "+ count + " $  |");
+          System.out.println("  ------------------");
+
+    }
+
+
 
     // I changed the name of the toString method because it was complaining with another toString method
     public String infoToString() {

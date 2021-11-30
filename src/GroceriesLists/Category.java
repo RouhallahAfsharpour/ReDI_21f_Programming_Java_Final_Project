@@ -5,16 +5,16 @@ import java.util.*;
 
 public class Category {
 
-    private  Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
     // inizializing the name of each category
-    private  String vegitables = " Vegetables ";
-    private  String milkProduction = " Milk Productions";
-    private  String meat = " Meat ";
-    private  String fish = " Fishs";
-    private  String sweets = " Sweets";
-    private  String drinks = " Drinks";
-    private  String cannedFood = " Canned Food";
+    public  static  String vegitables = " Vegetables ";
+    public  static  String milkProduction = " Milk Productions";
+    public  static  String meat = " Meat ";
+    public  static  String fish = " Fishs";
+    public  static  String sweets = " Sweets";
+    public  static  String drinks = " Drinks";
+    public  static String cannedFood = " Canned Food";
 
     Map<Integer,String> category = new HashMap<>();
 
@@ -24,16 +24,25 @@ public class Category {
         category = categoryToList();
     }
 
+    public void printCategorys(){
+        System.out.println("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~  ");
+        System.out.println("      GROCERIE'S CATEGORYS");
+        System.out.println(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
+        for (Map.Entry<Integer,String> elm : category.entrySet()) {
+            System.out.println("       "+elm.getKey() + " . "+ elm.getValue());
+        }
+        System.out.println(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
+    }
 
     // this method adds all categorys to the List
     private Map<Integer,String> categoryToList(){
-        category.put(1,this.vegitables);
-        category.put(2,this.milkProduction);
-        category.put(3,this.meat);
-        category.put(4,this.fish);
-        category.put(5,this.sweets);
-        category.put(6,this.drinks);
-        category.put(7,this.cannedFood);
+        category.put(1,vegitables);
+        category.put(2,milkProduction);
+        category.put(3,meat);
+        category.put(4,fish);
+        category.put(5,sweets);
+        category.put(6,drinks);
+        category.put(7,cannedFood);
 
         return category;
     }
@@ -67,9 +76,9 @@ public class Category {
     }
 
     // this method allows the user to chose the category of product and then the chosed category will be printed and it will run its process
-    public void runCategory(){
+    public static void runCategory(){
         System.out.println(" please chose the category that you want to by from : ( please enter a number )");
-        int choice = this.sc.nextInt();
+        int choice = sc.nextInt();
 
         switch (choice){
             case 1:
@@ -107,7 +116,7 @@ public class Category {
     }
 
     @Override
-    public String toString() {
+    public  String toString() {
         final StringBuffer sb = new StringBuffer("Category : \n ");
         sb.append(" ").append(category);
         sb.append(" \n .......... ");

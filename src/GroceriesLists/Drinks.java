@@ -1,16 +1,14 @@
 package GroceriesLists;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Drinks extends Groceris{
-    String drinks = " Drinks ";
 
-    private List<Groceris> drinkList = new ArrayList<>();
+    Map<Groceris,Float> drinksShoppingCart = new HashMap<>();
 
-    private HashMap<Integer, Groceris> listOfDrinksProducts = new HashMap<>();
+     List<Groceris> drinkList = new ArrayList<>();
+
+     HashMap<Integer, Groceris> listOfDrinksProducts = new HashMap<>();
 
     public Drinks(String name, String category, float price, Date productionsDate, Date expirationsDate, float calories) {
         super(name, category, price, productionsDate, expirationsDate, calories);
@@ -21,13 +19,13 @@ public class Drinks extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        Drinks cola = new Drinks(" Coca Cola ", drinks, 1.09f ,   new Date(121,8,1),   new Date(121,2,3) , 486f);
-        Drinks sprite =new Drinks("Sprite", drinks, 1.79f ,   new Date(121,11,11),   new Date(123,2,23) , 355f);
-        Drinks redbull =new Drinks("Red Bull", drinks, 1.67f ,   new Date(121,9,1),   new Date(123,2,2) , 459f);
-        Drinks orangeJuice =new Drinks("Orange Juice", drinks, 1.99f ,   new Date(121,10,12),   new Date(122,6,1) , 388f);
-        Drinks appleJuice =new Drinks("Apple Juice", drinks, 1.99f ,   new Date(121,7,1),   new Date(121,5,11) , 349f);
-        Drinks tonicWater =new Drinks("Tonic Water", drinks, 0.49f ,   new Date(121,12,10),   new Date(123,3,13), 69f);
-        Drinks bier =new Drinks("Bier", drinks, 0.79f ,   new Date(121,11,10),   new Date(123,4,10) , 549f);
+        Drinks cola = new Drinks("Coca Cola ", Category.drinks, 1.09f ,   new Date(121,8,1),   new Date(121,2,3) , 486f);
+        Drinks sprite =new Drinks("Sprite", Category.drinks, 1.79f ,   new Date(121,11,11),   new Date(123,2,23) , 355f);
+        Drinks redbull =new Drinks("Red Bull", Category.drinks, 1.67f ,   new Date(121,9,1),   new Date(123,2,2) , 459f);
+        Drinks orangeJuice =new Drinks("Orange Juice", Category.drinks, 1.99f ,   new Date(121,10,12),   new Date(122,6,1) , 388f);
+        Drinks appleJuice =new Drinks("Apple Juice", Category.drinks, 1.99f ,   new Date(121,7,1),   new Date(121,5,11) , 349f);
+        Drinks tonicWater =new Drinks("Tonic Water", Category.drinks, 0.49f ,   new Date(121,12,10),   new Date(123,3,13), 69f);
+        Drinks bier =new Drinks("Bier", Category.drinks, 0.79f ,   new Date(121,11,10),   new Date(123,4,10) , 549f);
 
         this.drinkList.add(cola);
         this.drinkList.add(sprite);
@@ -53,7 +51,7 @@ public class Drinks extends Groceris{
         System.out.println("....... Fish Products .......\n");
 
         // make an instance of Vegetables
-        Drinks v = new Drinks();
+       // Drinks v = new Drinks();
 
         // add all Products in List and Map
         addToTheList();
@@ -62,7 +60,8 @@ public class Drinks extends Groceris{
         printMap(listOfDrinksProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfDrinksProducts, v);
+        addToshoppingCart( listOfDrinksProducts);
+
     }
 
 

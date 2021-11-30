@@ -1,12 +1,10 @@
 package GroceriesLists;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Sweets extends Groceris{
-    String drinks = " Sewwts ";
+
+    Map<Groceris,Float> sweetsShoppingCart = new HashMap<>();
 
     private List<Groceris> sweetList = new ArrayList<>();
 
@@ -21,13 +19,13 @@ public class Sweets extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        Sweets donuts = new Sweets(" Donuts 6 x piece", drinks, 1.99f ,   new Date(121,9,10),   new Date(122,10,10) , 686f);
-        Sweets chocolate =new Sweets("Chocolate", drinks, 1.59f ,   new Date(121,11,1),   new Date(123,2,31) , 555f);
-        Sweets cheeseCake =new Sweets("Cheese Cake 1 x piece", drinks, 2.67f ,   new Date(121,9,1),  new Date(122,2,1) , 359f);
-        Sweets snickers =new Sweets("Snickers 1 x package", drinks, 1.99f ,   new Date(121,10,12),   new Date(121,6,3) , 688f);
-        Sweets twinkies =new Sweets("Twinkies 1 x package", drinks, 8.99f ,   new Date(121,7,1),   new Date(122,5,11) , 949f);
-        Sweets iceCream =new Sweets("Ice Cream", drinks, 2.49f ,   new Date(121,12,10),   new Date(123,3,10) , 569f);
-        Sweets lollipop =new Sweets("Lollipop 1 x package", drinks, 3.79f ,   new Date(121,11,10),   new Date(123,4,10) , 649f);
+        Sweets donuts = new Sweets(" Donuts 6 x piece", Category.sweets, 1.99f ,   new Date(121,9,10),   new Date(122,10,10) , 686f);
+        Sweets chocolate =new Sweets("Chocolate", Category.sweets, 1.59f ,   new Date(121,11,1),   new Date(123,2,31) , 555f);
+        Sweets cheeseCake =new Sweets("Cheese Cake 1 x piece", Category.sweets, 2.67f ,   new Date(121,9,1),  new Date(122,2,1) , 359f);
+        Sweets snickers =new Sweets("Snickers 1 x package", Category.sweets, 1.99f ,   new Date(121,10,12),   new Date(121,6,3) , 688f);
+        Sweets twinkies =new Sweets("Twinkies 1 x package", Category.sweets, 8.99f ,   new Date(121,7,1),   new Date(122,5,11) , 949f);
+        Sweets iceCream =new Sweets("Ice Cream", Category.sweets, 2.49f ,   new Date(121,12,10),   new Date(123,3,10) , 569f);
+        Sweets lollipop =new Sweets("Lollipop 1 x package", Category.sweets, 3.79f ,   new Date(121,11,10),   new Date(123,4,10) , 649f);
 
         this.sweetList.add(donuts);
         this.sweetList.add(chocolate);
@@ -62,7 +60,7 @@ public class Sweets extends Groceris{
         printMap(listOfSweetsProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfSweetsProducts, v);
+        addToshoppingCart(listOfSweetsProducts);
     }
 
 

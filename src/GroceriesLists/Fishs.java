@@ -1,12 +1,10 @@
 package GroceriesLists;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Fishs extends Groceris{
-    String fishs = " Fishs ";
+
+    Map<Groceris,Float> fishsShoppingCart = new HashMap<>();
 
     private List<Groceris> fishList = new ArrayList<>();
 
@@ -21,13 +19,13 @@ public class Fishs extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        Fishs billyBass = new Fishs("Billy Bass 1kg", fishs, 36.79f ,   new Date(121,8,10),   new Date(122,2,1) , 1286f);
-        Fishs hummer =new Fishs("Hummer 1kg", fishs, 85.99f ,   new Date(121,11,11),   new Date(122,5,1) , 1155f);
-        Fishs thunFish =new Fishs("Thun Fish 1kg", fishs, 49.67f ,   new Date(121,9,1),   new Date(122,2,2) , 1259f);
-        Fishs crab =new Fishs("Crab 500g", fishs, 50.99f ,   new Date(121,10,1),   new Date(122,2,10) , 888f);
-        Fishs salmon =new Fishs("Salmon 1kg", fishs, 33.99f ,   new Date(121,7,1),   new Date(121,2,1) , 1649f);
-        Fishs octopus =new Fishs("Octopus 500g", fishs, 44.99f ,   new Date(121,12,10),   new Date(122,3,10) , 979f);
-        Fishs scampi =new Fishs("Scampis 1kg", fishs, 25.79f ,   new Date(121,11,1),   new Date(122,4,10) , 1349f);
+        Fishs billyBass = new Fishs("Billy Bass 1kg", Category.fish, 36.79f ,   new Date(121,8,10),   new Date(122,2,1) , 1286f);
+        Fishs hummer =new Fishs("Hummer 1kg", Category.fish, 85.99f ,   new Date(121,11,11),   new Date(122,5,1) , 1155f);
+        Fishs thunFish =new Fishs("Thun Fish 1kg", Category.fish, 49.67f ,   new Date(121,9,1),   new Date(122,2,2) , 1259f);
+        Fishs crab =new Fishs("Crab 500g", Category.fish, 50.99f ,   new Date(121,10,1),   new Date(122,2,10) , 888f);
+        Fishs salmon =new Fishs("Salmon 1kg", Category.fish, 33.99f ,   new Date(121,7,1),   new Date(121,2,1) , 1649f);
+        Fishs octopus =new Fishs("Octopus 500g", Category.fish, 44.99f ,   new Date(121,12,10),   new Date(122,3,10) , 979f);
+        Fishs scampi =new Fishs("Scampis 1kg", Category.fish, 25.79f ,   new Date(121,11,1),   new Date(122,4,10) , 1349f);
 
         this.fishList.add(billyBass);
         this.fishList.add(hummer);
@@ -62,7 +60,7 @@ public class Fishs extends Groceris{
         printMap(listOfFishProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfFishProducts, v);
+        addToshoppingCart( listOfFishProducts);
     }
 
 

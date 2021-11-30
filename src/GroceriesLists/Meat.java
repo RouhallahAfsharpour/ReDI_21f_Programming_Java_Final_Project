@@ -1,12 +1,10 @@
 package GroceriesLists;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Meat extends Groceris{
-    String meat = " Meat ";
+
+    Map<Groceris,Float> meatShoppingCart = new HashMap<>();
 
     private List<Groceris> meatList = new ArrayList<>();
 
@@ -20,13 +18,13 @@ public class Meat extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        Meat rumpsteak = new Meat("Rumpsteak 1kg", meat , 105.90f ,   new Date(121,8,1),   new Date(122,3,1 ), 1299f);
-        Meat skirtSteak =new Meat("Skirt Steak 1kg", meat , 41.69f ,   new Date(121,9,11),   new Date(121,12,31) , 1059f);
-        Meat chickenBreast =new Meat("Chicken Breast 1kg", meat , 6.29f ,   new Date(121,7,1),   new Date(122,2,1) , 659f);
-        Meat salami =new Meat("Salami 300g", meat , 1.99f ,   new Date(121,10,1),   new Date(122,6,1) , 879f);
-        Meat turkey =new Meat("Turkey 1kg", meat , 9.99f ,   new Date(121,8,1),   new Date(121,2,11) , 1449f);
-        Meat beefSausages =new Meat("Beef Sausages 1 pakage", meat , 4.99f ,   new Date(121,11,10),   new Date(122,2,10) , 979f);
-        Meat chickenSausages =new Meat("Chicken Sausages", meat , 3.79f ,   new Date(121,11,10),   new Date(122,2,10) , 749f);
+        Meat rumpsteak = new Meat("Rumpsteak 1kg", Category.meat , 105.90f ,   new Date(121,8,1),   new Date(122,3,1 ), 1299f);
+        Meat skirtSteak =new Meat("Skirt Steak 1kg", Category.meat , 41.69f ,   new Date(121,9,11),   new Date(121,12,31) , 1059f);
+        Meat chickenBreast =new Meat("Chicken Breast 1kg", Category.meat , 6.29f ,   new Date(121,7,1),   new Date(122,2,1) , 659f);
+        Meat salami =new Meat("Salami 300g", Category.meat , 1.99f ,   new Date(121,10,1),   new Date(122,6,1) , 879f);
+        Meat turkey =new Meat("Turkey 1kg", Category.meat , 9.99f ,   new Date(121,8,1),   new Date(121,2,11) , 1449f);
+        Meat beefSausages =new Meat("Beef Sausages 1 pakage", Category.meat , 4.99f ,   new Date(121,11,10),   new Date(122,2,10) , 979f);
+        Meat chickenSausages =new Meat("Chicken Sausages", Category.meat , 3.79f ,   new Date(121,11,10),   new Date(122,2,10) , 749f);
 
         this.meatList.add(rumpsteak);
         this.meatList.add(skirtSteak);
@@ -61,7 +59,7 @@ public class Meat extends Groceris{
         printMap(listOfMeatProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfMeatProducts, v);
+        addToshoppingCart( listOfMeatProducts);
     }
 
 

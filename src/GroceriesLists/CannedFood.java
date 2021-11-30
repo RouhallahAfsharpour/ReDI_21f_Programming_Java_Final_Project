@@ -1,16 +1,15 @@
 package GroceriesLists;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class CannedFood extends Groceris{
-    String cannedFood = " Canned Food ";
+    // String cannedFood = Category.cannedFood;
 
-    private List<Groceris> drinkList = new ArrayList<>();
+    Map<Groceris,Float> CannedFoodShoppingCart = new HashMap<>();
 
-    private HashMap<Integer, Groceris> listOfDrinksProducts = new HashMap<>();
+    List<Groceris> drinkList = new ArrayList<>();
+
+     HashMap<Integer, Groceris> listOfDrinksProducts = new HashMap<>();
 
     public CannedFood(String name, String category, float price, Date productionsDate, Date expirationsDate, float calories) {
         super(name, category, price, productionsDate, expirationsDate, calories);
@@ -21,13 +20,13 @@ public class CannedFood extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        CannedFood tuna = new CannedFood(" Tuna ", cannedFood, 1.19f ,   new Date(121,8,10),   new Date(124,10,1) , 466f);
-        CannedFood tomatoSauce =new CannedFood("Tomato Sauce", cannedFood, 0.59f ,   new Date(121,10,21),   new Date(124,2,31) , 155f);
-        CannedFood sardines =new CannedFood("Sardines", cannedFood, 0.79f ,   new Date(121,9,1),   new Date(124,2,1) , 559f);
-        CannedFood olives =new CannedFood("Olives", cannedFood, 1.29f ,   new Date(121,10,12),   new Date(121,6,1), 228f);
-        CannedFood beans =new CannedFood("Beans", cannedFood, 1.59f ,   new Date(121,7,1),   new Date(123,5,3) , 339f);
-        CannedFood corn =new CannedFood("Corn", cannedFood, 1.39f ,   new Date(121,12,1),   new Date(123,5,1) , 169f);
-        CannedFood pea =new CannedFood("Pea", cannedFood, 0.59f ,   new Date(121,11,10),   new Date(124,4,1) , 249f);
+        CannedFood tuna = new CannedFood(" Tuna ", Category.cannedFood, 1.19f ,   new Date(121,8,10),   new Date(124,10,1) , 466f);
+        CannedFood tomatoSauce =new CannedFood("Tomato Sauce", Category.cannedFood, 0.59f ,   new Date(121,10,21),   new Date(124,2,31) , 155f);
+        CannedFood sardines =new CannedFood("Sardines", Category.cannedFood, 0.79f ,   new Date(121,9,1),   new Date(124,2,1) , 559f);
+        CannedFood olives =new CannedFood("Olives", Category.cannedFood, 1.29f ,   new Date(121,10,12),   new Date(121,6,1), 228f);
+        CannedFood beans =new CannedFood("Beans", Category.cannedFood, 1.59f ,   new Date(121,7,1),   new Date(123,5,3) , 339f);
+        CannedFood corn =new CannedFood("Corn", Category.cannedFood, 1.39f ,   new Date(121,12,1),   new Date(123,5,1) , 169f);
+        CannedFood pea =new CannedFood("Pea", Category.cannedFood, 0.59f ,   new Date(121,11,10),   new Date(124,4,1) , 249f);
 
         this.drinkList.add(tuna);
         this.drinkList.add(tomatoSauce);
@@ -53,7 +52,7 @@ public class CannedFood extends Groceris{
         System.out.println("....... Fish Products .......\n");
 
         // make an instance of Vegetables
-        CannedFood v = new CannedFood();
+       // CannedFood v = new CannedFood();
 
         // add all Products in List and Map
         addToTheList();
@@ -62,7 +61,9 @@ public class CannedFood extends Groceris{
         printMap(listOfDrinksProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfDrinksProducts, v);
+        //addToshoppingCart(CannedFoodShoppingCart, listOfDrinksProducts);
+        addToshoppingCart(listOfDrinksProducts);
+
     }
 
 

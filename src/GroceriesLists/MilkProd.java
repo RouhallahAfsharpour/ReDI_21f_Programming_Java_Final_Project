@@ -1,14 +1,11 @@
 package GroceriesLists;
 
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MilkProd extends Groceris{
 
-    String milk = " Milk Productions";
+    Map<Groceris,Float> milkShoppingCart = new HashMap<>();
 
     private List<Groceris> milkList = new ArrayList<>();
 
@@ -22,13 +19,13 @@ public class MilkProd extends Groceris{
     }
 
     public List<Groceris> addToTheList(){
-        MilkProd mozzarella = new MilkProd("Mozzarella Cheese ", milk , 0.69f ,   new Date(121,8,1),   new Date(122,3,1) , 399f);
-        MilkProd parmazan =new MilkProd("Parmazan Cheese ", milk , 1.69f ,   new Date(121,9,1),   new Date(122,2,1) , 459f);
-        MilkProd creamCheese =new MilkProd("Cream Cheese ", milk , 1.29f ,   new Date(121,5,1),   new Date(122,4,1) , 559f);
-        MilkProd curdCheese =new MilkProd("Curd Cheese ", milk , 0.99f ,   new Date(121,10,1),   new Date(122,9,1) , 659f);
-        MilkProd milkLawFatt =new MilkProd("Milk (1.5 fatt)", milk , 1.09f ,   new Date(121,11,1),   new Date(121,12,1) , 149f);
-        MilkProd milkHighFatt =new MilkProd("Milk (3.5 fatt)", milk , 0.99f ,   new Date(121,11,1),   new Date(121,12,11) , 179f);
-        MilkProd yoghurt =new MilkProd("yoghurt", milk , 1.79f ,   new Date(121,11,10),   new Date(122,2,19) , 249f);
+        MilkProd mozzarella = new MilkProd("Mozzarella Cheese ", Category.milkProduction , 0.69f ,   new Date(121,8,1),   new Date(122,3,1) , 399f);
+        MilkProd parmazan =new MilkProd("Parmazan Cheese ", Category.milkProduction , 1.69f ,   new Date(121,9,1),   new Date(122,2,1) , 459f);
+        MilkProd creamCheese =new MilkProd("Cream Cheese ", Category.milkProduction , 1.29f ,   new Date(121,5,1),   new Date(122,4,1) , 559f);
+        MilkProd curdCheese =new MilkProd("Curd Cheese ", Category.milkProduction , 0.99f ,   new Date(121,10,1),   new Date(122,9,1) , 659f);
+        MilkProd milkLawFatt =new MilkProd("Milk (1.5 fatt)", Category.milkProduction , 1.09f ,   new Date(121,11,1),   new Date(121,12,1) , 149f);
+        MilkProd milkHighFatt =new MilkProd("Milk (3.5 fatt)", Category.milkProduction , 0.99f ,   new Date(121,11,1),   new Date(121,12,11) , 179f);
+        MilkProd yoghurt =new MilkProd("yoghurt", Category.milkProduction , 1.79f ,   new Date(121,11,10),   new Date(122,2,19) , 249f);
 
         this.milkList.add(mozzarella);
         this.milkList.add(parmazan);
@@ -63,7 +60,8 @@ public class MilkProd extends Groceris{
         printMap(listOfMilkProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart(super.shoppingCart, listOfMilkProducts, v);
+         addToshoppingCart(listOfMilkProducts);
+
     }
 
 

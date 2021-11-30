@@ -6,14 +6,14 @@ import java.util.*;
 public class Category {
 
     private  Scanner sc = new Scanner(System.in);
-    // inizializing the name of each category
 
+    // inizializing the name of each category
     private  String vegitables = " Vegetables ";
     private  String milkProduction = " Milk Productions";
     private  String meat = " Meat ";
     private  String fish = " Fishs";
     private  String sweets = " Sweets";
-    private  String drinkd = " Drinks";
+    private  String drinks = " Drinks";
     private  String cannedFood = " Canned Food";
 
     Map<Integer,String> category = new HashMap<>();
@@ -32,8 +32,9 @@ public class Category {
         category.put(3,this.meat);
         category.put(4,this.fish);
         category.put(5,this.sweets);
-        category.put(6,this.drinkd);
+        category.put(6,this.drinks);
         category.put(7,this.cannedFood);
+
         return category;
     }
 
@@ -57,8 +58,8 @@ public class Category {
         return sweets;
     }
 
-    public String getDrinkd() {
-        return drinkd;
+    public String getDrinks() {
+        return drinks;
     }
 
     public String getCannedFood() {
@@ -80,19 +81,24 @@ public class Category {
                 milk.run();
                 break;
             case 3:
-
+                Meat meat = new Meat();
+                meat.run();
                 break;
             case 4:
-
+                Fishs fish = new Fishs();
+                fish.run();
                 break;
             case 5:
-
+                Sweets sweet = new Sweets();
+                sweet.run();
                 break;
             case 6:
-
+                Drinks drink = new Drinks();
+                drink.run();
                 break;
             case 7:
-
+                CannedFood cannedFood = new CannedFood();
+                cannedFood.run();
                 break;
             default:
                 runCategory();

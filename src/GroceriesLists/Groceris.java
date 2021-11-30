@@ -1,4 +1,5 @@
 package GroceriesLists;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -12,8 +13,8 @@ public abstract class Groceris {
     private String name;
     private String category;
     private float price;
-    private String productionsDate ;
-    private String expirationsDate ;
+    private Date productionsDate ;
+    private Date expirationsDate ;
     private float calories;
 
     // scanner to use in all classes that extends this class
@@ -24,7 +25,7 @@ public abstract class Groceris {
     }
 
     // constructor for the properties
-    public Groceris(String name, String category, float price, String productionsDate, String expirationsDate, float calories) {
+    public Groceris(String name, String category, float price, Date productionsDate, Date expirationsDate, float calories) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -96,7 +97,7 @@ public abstract class Groceris {
             run();
         }
         else if(choice == 2){
-            Test.launch();
+            Test.launchCategorys();
         }
     }
 
@@ -123,11 +124,11 @@ public abstract class Groceris {
         return price;
     }
 
-    public String getProductionsDate() {
+    public Date getProductionsDate() {
         return productionsDate;
     }
 
-    public String getExpirationsDate() {
+    public Date getExpirationsDate() {
         return expirationsDate;
     }
 
@@ -136,7 +137,7 @@ public abstract class Groceris {
         final StringBuffer sb = new StringBuffer(" ");
         sb.append("| name : | ").append(name+"\n");
         sb.append(" | category : |").append(category+"\n");
-        sb.append(" | price : | ").append(price+"\n");
+        sb.append(" | price : | ").append(price+ " $"+"\n");
         sb.append(" | productions Date : | ").append(productionsDate+"\n");
         sb.append(" | expirations Date : | ").append(expirationsDate+"\n");
         sb.append(" | calories : | ").append(calories).append(" cal");

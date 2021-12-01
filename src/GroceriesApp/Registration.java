@@ -1,4 +1,4 @@
-package GroceriesLists;
+package GroceriesApp;
 import java.util.Scanner;
 
 //RA:This class should be modified later

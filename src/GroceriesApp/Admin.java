@@ -1,4 +1,4 @@
-package GroceriesLists;
+package GroceriesApp;
 
 //RA: this class is for superusers
 public class Admin extends Registration {

@@ -1,4 +1,4 @@
-package GroceriesLists;
+package GroceriesApp;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

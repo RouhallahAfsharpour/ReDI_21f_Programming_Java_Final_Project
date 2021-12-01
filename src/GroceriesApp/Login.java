@@ -1,4 +1,4 @@
-package GroceriesLists;
+package GroceriesApp;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
@@ -26,6 +26,10 @@ public class Login {
                 if (reg.getUserType().equals("admin")){
                     return 1;
                 }else {
+                    //RA: go to user area
+                    System.out.println("User Area:");
+                    User user = new User(reg.getEmail(),reg.getFirstName());
+                    user.askUser();
                     return 0;
                 }
             } else if (reg.getEmail().equals(email) && !reg.getPassword().equals(password)){

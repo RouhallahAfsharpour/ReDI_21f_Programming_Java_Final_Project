@@ -1,4 +1,6 @@
-package GroceriesLists;
+package GroceriesApp;
+import GroceriesLists.Main;
+
 import java.io.*;
 import java.util.*;
 
@@ -46,9 +48,10 @@ public class GroceriesManagement {
                 //RA: Login as an already registered user
                 Login log = new Login();
                 int optionChosen = log.doLogin(read());
-                if(optionChosen==0){
+                /*if(optionChosen==0){
                     //RA:go to normal user area: Luay's classes for shopping, etc
-                } else if(optionChosen==1){
+                } else*/
+                if(optionChosen==1){
                     //RA: go to admin area
                     adminArea();
                 }

@@ -16,6 +16,7 @@ public abstract class Groceris {
 
     // the First properties of the Groceries
 
+    // that gives the current date of today
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     static LocalDateTime now = LocalDateTime.now();
 
@@ -118,13 +119,6 @@ public abstract class Groceris {
             System.out.println(" invalid Input! please choose one of the numbers 1,2,3! ");
             askUserAgain();
         }
-    }
-
-    // this method prints the shopping cart at the end which includes everything he chosed
-    public void printLast(){
-      //  for(Groceris elm : shoppingCart) {
-        //    System.out.println(elm.toString());
-        //}
     }
 
 

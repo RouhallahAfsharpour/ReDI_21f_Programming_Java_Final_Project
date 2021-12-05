@@ -1,5 +1,6 @@
 package GroceriesApp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -14,13 +15,13 @@ public class TempOrder {
     private String name;
     private String category;
     private float price;
-    private Date productionsDate ;
-    private Date expirationsDate ;
+    private LocalDate productionsDate ;
+    private LocalDate expirationsDate ;
     private float calories;
     private int orderId;
 
 
-    public TempOrder(String name, String category, float price, Date productionsDate, Date expirationsDate, float calories, int orderId) {
+    public TempOrder(String name, String category, float price, LocalDate productionsDate, LocalDate expirationsDate, float calories, int orderId) {
         this.name = name;
         this.category = category;
         this.price = price;
@@ -32,14 +33,14 @@ public class TempOrder {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", price=" + price +
-                ", productionsDate=" + productionsDate +
-                ", expirationsDate=" + expirationsDate +
-                ", calories=" + calories +
-                ", orderId=" + orderId +
+        return "{"
+                + name +
+                "," + category +
+                "," + price +
+                "," + productionsDate +
+                "," + expirationsDate +
+                "," + calories +
+                "," + orderId +
                 '}';
     }
 }

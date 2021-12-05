@@ -49,7 +49,7 @@ public class CannedFood extends Groceris{
 
     @Override
     public void run() {
-        System.out.println("....... Fish Products .......\n");
+        System.out.println("....... Canned Products .......\n");
 
         // make an instance of Vegetables
        // CannedFood v = new CannedFood();

@@ -21,7 +21,9 @@ public class GroceriesManagement {
 
     //RA: This is a method for just greeting, this would be the first thing to be shown after running the app
     public void greeting(){
-        System.out.println("Hello, Welcome to the Groceries App");
+        System.out.println("     .......................................");
+        System.out.println("     : Hello, Welcome to the Groceries App :");
+        System.out.println("     ....................................... \n");
     }
 
     //RA: this method shows the options which user can choose

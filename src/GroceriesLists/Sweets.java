@@ -48,7 +48,7 @@ public class Sweets extends Groceris{
 
     @Override
     public void run() {
-        System.out.println("....... Fish Products .......\n");
+        System.out.println("....... Sweat Products .......\n");
 
         // make an instance of Vegetables
         Sweets v = new Sweets();

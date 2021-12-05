@@ -1,4 +1,6 @@
 package GroceriesApp;
+import GroceriesLists.Test;
+
 import java.io.IOException;
 
 public class GroceriesApp {
@@ -18,7 +20,8 @@ public class GroceriesApp {
 
             //RA: confirm to do more when the action is finished
             if (!app.confirm("Do you want to perform another action?")) {
-                app.quit();
+              //  app.quit();
+                Test.launchCategorys();
             }
 
         } while (true);

@@ -59,7 +59,7 @@ public class Vegetables extends Groceris {
 
     }
     public  void run(){
-        System.out.println("....... Vegitables .......\n");
+        System.out.println("....... Vegetables Products .......\n");
 
         // make an instance of Vegetables
 

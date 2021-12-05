@@ -6,6 +6,11 @@ import java.util.*;
 
 public class GroceriesManagement {
 
+    //RA: this is a relative path for the Orders file - we need to change it later
+    final File fOrders = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+    String fPathOrders = (fOrders.getPath()).replaceAll("\\\\", "/");
+    private String pathOrders = (fPathOrders.substring(0, fPathOrders.length() - 37))+"/orders.txt";
+
     //RA: for all inputs through terminal we define a scanner once
     private final Scanner reader = new Scanner(System.in);
 
@@ -228,10 +233,30 @@ public class GroceriesManagement {
                 } catch (IOException e) {
                     e.getMessage();
                 }
+            } else if (adminChoice==4){
+
             } else {
                 System.out.println("under development!");
             }
         }
+
+        //RA: this method reads all orders stored in orders.txt file and put them in a list
+        /*public void readOrders() throws IOException{
+            List<TempOrder> list = new ArrayList<>();
+
+            try {
+                BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
+                String firstLine = fileReader.readLine();
+
+                String line = "";
+                while ((line = fileReader.readLine()) != null) {
+                    String[][] elements = line.replace("{").split(",");
+                    //list.add(new TempOrder(elements[0], elements[1], elements[2], elements[3], elements[4],elements[5]));
+                }
+            }catch (IOException e){
+                e.getMessage();
+            }
+        }*/
 
 
 

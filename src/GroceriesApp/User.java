@@ -53,13 +53,17 @@ public class User {
                 for (TempOrder order:ordersList) {
                     System.out.println(order.toString());
                 }
-                System.out.println("Do you want to keep your order? y/n");
-                String confirmOrder = reader.nextLine();
-                confirmOrder += reader.next();
-                if (confirmOrder.toLowerCase(Locale.ROOT).equals("y")||confirmOrder.toLowerCase(Locale.ROOT).equals("yes")){
-                    confirmOrder(ordersList);
+                if (!ordersList.isEmpty()){
+                    System.out.println("Do you want to keep your order? y/n");
+                    String confirmOrder = reader.nextLine();
+                    confirmOrder += reader.next();
+                    if (confirmOrder.toLowerCase(Locale.ROOT).equals("y")||confirmOrder.toLowerCase(Locale.ROOT).equals("yes")){
+                        confirmOrder(ordersList);
+                    }else {
+                        ordersList=new ArrayList<>();
+                    }
                 }else {
-                    ordersList=new ArrayList<>();
+                    System.out.println("you have no orders right now");
                 }
             }else if (orderOfUser==3){
                 buyOrder();
@@ -89,10 +93,11 @@ public class User {
     }
 
     public void confirmOrder(List<TempOrder> ordersList){
-        orders.put(now,ordersList);
+        System.out.println(ordersList.size()+" items in the list are saved!");
     }
 
     public void buyOrder(){
+        orders.put(now,ordersList);
         storeOrders(orders);
     }
 
@@ -105,7 +110,7 @@ public class User {
             //{{email,TimeOfOrder},{orders}}
             fileWriter.append("\n");
             for (Map.Entry<LocalDateTime, List<TempOrder>> entry : orders.entrySet()) {
-                fileWriter.append("{"+"{"+this.email+","+entry.getKey().toString()+"},"+"{"+entry.getValue().toString().replace("[","").replace("]","")+"}"+"}");
+                fileWriter.append("{"+this.email+","+entry.getKey().toString()+"},"+"{"+entry.getValue().toString().replace("[","").replace("]","")+"}");
                 //fileWriter.append("\n");
             }
             fileWriter.flush();

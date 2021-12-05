@@ -234,33 +234,42 @@ public class GroceriesManagement {
                     e.getMessage();
                 }
             } else if (adminChoice==4){
-
+                System.out.println("Please type the email of the user: ");
+                String emailOfTheUser = this.reader.nextLine();
+                emailOfTheUser += this.reader.next();
+                readOrders(emailOfTheUser);
             } else {
                 System.out.println("under development!");
             }
         }
 
-        //RA: this method reads all orders stored in orders.txt file and put them in a list
-        /*public void readOrders() throws IOException{
-            List<TempOrder> list = new ArrayList<>();
 
-            try {
-                BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
-                String firstLine = fileReader.readLine();
+    }
 
-                String line = "";
-                while ((line = fileReader.readLine()) != null) {
-                    String[][] elements = line.replace("{").split(",");
-                    //list.add(new TempOrder(elements[0], elements[1], elements[2], elements[3], elements[4],elements[5]));
+    //RA: this method reads all orders stored in orders.txt file and put them in a list
+    private void readOrders(String emailOfTheUser) throws IOException {
+        List<TempOrder> list = new ArrayList<>();
+        boolean check = false;
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
+            String firstLine = fileReader.readLine();
+
+            String line = "";
+            while ((line = fileReader.readLine()) != null) {
+                //This part should be corrected !
+                String[] elements = line.split(",");
+                String[] emailAndOrderTime =elements[0].replace("{","").replace("}","").split(",");
+                if (emailAndOrderTime[0].equals(emailOfTheUser)){
+                    check = true;
+                    System.out.println(line);
                 }
-            }catch (IOException e){
-                e.getMessage();
             }
-        }*/
-
-
-
-
+            if (check==false){
+                System.out.println("the typed email is not correct!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

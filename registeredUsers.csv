@@ -1,0 +1,7 @@
+email,password,firstName,lastName,address,userType
+abadanastro@gmail.com,12345,Ruli,Afshar,Berlinerstr2,admin
+admin,admin,,,,admin
+luay@yahoo.com,223344,Luay,Al-jumaa,berlinerstr1,user
+test,123,test,test,teststreet1,user
+xx,xx,xx,xx,xx,user
+ruli@gmail.com,22,ruli,afshar,berlinplatz1,user

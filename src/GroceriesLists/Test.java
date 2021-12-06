@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Test{
 
     // this Map stors all the chosen Groceries. I had to nake it like this unfotunately becyuse it doesn't work anyway.
-   static Map<String,Float> shoppingCart = new HashMap<>();
+   public static Map<String,Float> shoppingCart = new HashMap<>();
 
     public static void launchCategorys() {
           Category c = new Category();

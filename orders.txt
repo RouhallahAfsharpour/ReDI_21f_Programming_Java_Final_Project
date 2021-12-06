@@ -1,6 +1,6 @@
-{email,TimeOfOrder},{orders}
-{test,2021-12-05T12:59:28.440582400},{{Potato,vegetable,2.99,2021-12-01,2021-12-21,77.0,2}, {Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}}
-{test,2021-12-05T12:59:28.440582400},{{Potato,vegetable,2.99,2021-12-01,2021-12-21,77.0,2}, {Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}}
-{ruli@gmail.com,2021-12-05T13:02:07.271786600},{{Potato,vegetable,2.99,2021-12-01,2021-12-21,77.0,2}}
-{xx,2021-12-05T13:08:48.790967700},{{Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}, {Potato,vegetable,2.99,2021-12-01,2021-12-21,77.0,2}, {Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}}
-{test,2021-12-05T13:11:55.683054300},{{Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}, {Tomato,vegetable,1.99,2021-11-08,2021-12-28,18.0,1}}
+email[orders],amountPaid
+test;[Parmazan Cheese , Thun Fish 1kg, Cream Cheese ];52.649998
+test;[Beef Sausages 1 pakage, Turkey 1kg, Octopus 500g];59.97
+test;[Beef Sausages 1 pakage, Turkey 1kg, Rumpsteak 1kg, Octopus 500g];165.87001
+xx;[Salmon 1kg, Hummer 1kg, Orange Juice];121.96999
+de;[Sardines];0.79

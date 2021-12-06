@@ -1,13 +1,9 @@
 package GroceriesApp;
 
 import GroceriesLists.Main;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
+import GroceriesLists.Test;
+import java.io.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class User {
@@ -18,6 +14,11 @@ public class User {
     private Map<String,Map<LocalDateTime,List<TempOrder>>> allOrders= new HashMap<>();
 
     LocalDateTime now = LocalDateTime.now();
+
+    //RA: this is a relative path for the Orders file - we need to change it later
+    final File fOrders = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+    String fPathOrders = (fOrders.getPath()).replaceAll("\\\\", "/");
+    private String pathOrders = (fPathOrders.substring(0, fPathOrders.length() - 37))+"/orders.txt";
 
     //RA: this is a relative path for the registeredUsers file - we need to change it later
     final File f = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
@@ -40,83 +41,77 @@ public class User {
         ordersList.add(order);
     }
 
-
-    public void askUser(){
+    //RA: this part will ask the user to choose something to do
+    public void askUser() throws IOException {
         int userChoice =0;
         while (userChoice<3){
+            System.out.println("--------------------------------------------------");
             System.out.println("What would you like to do, " + this.firstName + "?");
-            System.out.println("[1. Add order, 2. See order, 3. buy the order, 4. Log out]");
+            System.out.println("[1. Add order, 2. see previous orders, 3. Log out]");
             int orderOfUser = reader.nextInt();
             if (orderOfUser==1){
                 getOrder();
-            }else if (orderOfUser==2){
-                for (TempOrder order:ordersList) {
-                    System.out.println(order.toString());
-                }
-                if (!ordersList.isEmpty()){
-                    System.out.println("Do you want to keep your order? y/n");
-                    String confirmOrder = reader.nextLine();
-                    confirmOrder += reader.next();
-                    if (confirmOrder.toLowerCase(Locale.ROOT).equals("y")||confirmOrder.toLowerCase(Locale.ROOT).equals("yes")){
-                        confirmOrder(ordersList);
-                    }else {
-                        ordersList=new ArrayList<>();
-                    }
-                }else {
-                    System.out.println("you have no orders right now");
-                }
-            }else if (orderOfUser==3){
-                buyOrder();
-                System.out.println("purchase was confirmed");
-                ordersList=new ArrayList<>();
-            }
-            else {
-                userChoice =4;
-            }
-        }
-    }
-
-    public void getOrder(){
-        int userChoice =0;
-        while (userChoice<3){
-            System.out.println("What would you like to order, " + this.firstName + "?");
-            System.out.println("[1. Tomato, 2. Potato, 3.Nothing]");
-            int orderOfUser = reader.nextInt();
-            if (orderOfUser==1){
-                orders(new TempOrder("Tomato", "vegetable" , 1.99f, LocalDate.parse("2021-11-08"),   LocalDate.parse("2021-12-28") , 18f,1));
-            }else if (orderOfUser==2){
-                orders(new TempOrder("Potato", "vegetable" , 2.99f, LocalDate.parse("2021-12-01"),   LocalDate.parse("2021-12-21") , 77f,2));
-            }else {
+            } else if (orderOfUser==2){
+                readOrdersForUser(this.email);
+            } else {
                 userChoice =3;
             }
         }
     }
 
-    public void confirmOrder(List<TempOrder> ordersList){
-        System.out.println(ordersList.size()+" items in the list are saved!");
+    public void getOrder(){
+        //RA: In this part my codes will be connected to the Luay's codes
+        Test.launchCategorys();
+        if (!Test.shoppingCart.isEmpty()){
+            storeOrders();
+        }
     }
-
-    public void buyOrder(){
-        orders.put(now,ordersList);
-        storeOrders(orders);
-    }
-
-    public void storeOrders(Map<LocalDateTime,List<TempOrder>> orders){
+    //RA: this part will save the orders to the file
+    public void storeOrders(){
+        List<String> eachBill=new ArrayList<>();
         try {
-            //RA: clearing the content
-            //new FileWriter(this.path, false).close();
             //RA: updating the content
             FileWriter fileWriter = new FileWriter(this.path,true);
-            //{{email,TimeOfOrder},{orders}}
             fileWriter.append("\n");
-            for (Map.Entry<LocalDateTime, List<TempOrder>> entry : orders.entrySet()) {
-                fileWriter.append("{"+this.email+","+entry.getKey().toString()+"},"+"{"+entry.getValue().toString().replace("[","").replace("]","")+"}");
-                //fileWriter.append("\n");
+            float sum = 0;
+            for (Map.Entry<String,Float> entry : Test.shoppingCart.entrySet()) {
+                eachBill.add(entry.getKey());
+                sum += entry.getValue();
             }
+            fileWriter.append(this.email+";"+Arrays.toString(eachBill.toArray())+";"+sum);
+
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
             e.getMessage();
+        }
+    }
+
+    //RA: this part will read the orders for user from the file of orders
+    public void readOrdersForUser(String emailOfTheUser) throws IOException {
+        double totalPaid=0;
+        boolean check = false;
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
+            String firstLine = fileReader.readLine();
+            String line = "";
+            while ((line = fileReader.readLine()) != null) {
+                //This part should be corrected !
+                String[] elements = line.split(";");
+                String[] items=elements[1].replace("[","").replace("]","").split(",");
+                if (elements[0].equals(emailOfTheUser)){
+                    check = true;
+                    System.out.println("You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0);
+                    totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
+                }
+            }
+            if (check==true){
+                System.out.println("You paid in total "+totalPaid+" $ ");
+            }else {
+                System.out.println("You have never ordered with us");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

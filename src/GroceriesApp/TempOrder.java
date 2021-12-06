@@ -3,10 +3,8 @@ package GroceriesApp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
+//RA: This class will not be used anymore as I connected my codes to Luay's codes
 public class TempOrder {
 
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");

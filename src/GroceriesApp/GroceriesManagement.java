@@ -55,9 +55,6 @@ public class GroceriesManagement {
                 //RA: Login as an already registered user
                 Login log = new Login();
                 int optionChosen = log.doLogin(read());
-                /*if(optionChosen==0){
-                    //RA:go to normal user area: Luay's classes for shopping, etc
-                } else*/
                 if(optionChosen==1){
                     //RA: go to admin area
                     adminArea();
@@ -241,7 +238,7 @@ public class GroceriesManagement {
                 emailOfTheUser += this.reader.next();
                 readOrders(emailOfTheUser);
             } else {
-                System.out.println("under development!");
+                adminChoice=5;
             }
         }
 
@@ -249,24 +246,27 @@ public class GroceriesManagement {
     }
 
     //RA: this method reads all orders stored in orders.txt file and put them in a list
-    private void readOrders(String emailOfTheUser) throws IOException {
-        List<TempOrder> list = new ArrayList<>();
+    public void readOrders(String emailOfTheUser) throws IOException {
+        double totalPaid=0;
         boolean check = false;
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
             String firstLine = fileReader.readLine();
-
             String line = "";
             while ((line = fileReader.readLine()) != null) {
                 //This part should be corrected !
-                String[] elements = line.split(",");
-                String[] emailAndOrderTime =elements[0].replace("{","").replace("}","").split(",");
-                if (emailAndOrderTime[0].equals(emailOfTheUser)){
+                String[] elements = line.split(";");
+                String[] items=elements[1].replace("[","").replace("]","").split(",");
+
+                if (elements[0].equals(emailOfTheUser)){
                     check = true;
-                    System.out.println(line);
+                    System.out.println(elements[0]+" ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0);
+                    totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
                 }
             }
-            if (check==false){
+            if (check==true){
+                System.out.println(emailOfTheUser+" paid in total "+totalPaid+" $ ");
+            }else {
                 System.out.println("the typed email is not correct!");
             }
         } catch (IOException e) {

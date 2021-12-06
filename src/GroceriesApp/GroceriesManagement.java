@@ -254,7 +254,7 @@ public class GroceriesManagement {
             String firstLine = fileReader.readLine();
             String line = "";
             while ((line = fileReader.readLine()) != null) {
-                //This part should be corrected !
+                //RA: This part is for reading and putting the stuff in the array!
                 String[] elements = line.split(";");
                 String[] items=elements[1].replace("[","").replace("]","").split(",");
 
@@ -273,5 +273,8 @@ public class GroceriesManagement {
             e.printStackTrace();
         }
     }
+
+    //RA: one part for statistics should be added here:
+    //Map(email,(orders,totalpaid))...
 
 }

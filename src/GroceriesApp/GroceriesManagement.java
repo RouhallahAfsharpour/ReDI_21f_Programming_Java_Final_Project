@@ -260,7 +260,7 @@ public class GroceriesManagement {
 
                 if (elements[0].equals(emailOfTheUser)){
                     check = true;
-                    System.out.println(elements[0]+" ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0);
+                    System.out.println(elements[3]+" "+elements[0]+" ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
                     totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
                 }
             }

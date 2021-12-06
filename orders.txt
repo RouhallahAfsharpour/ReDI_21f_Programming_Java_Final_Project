@@ -1,6 +1,4 @@
-email[orders],amountPaid
-test;[Parmazan Cheese , Thun Fish 1kg, Cream Cheese ];52.649998
-test;[Beef Sausages 1 pakage, Turkey 1kg, Octopus 500g];59.97
-test;[Beef Sausages 1 pakage, Turkey 1kg, Rumpsteak 1kg, Octopus 500g];165.87001
-xx;[Salmon 1kg, Hummer 1kg, Orange Juice];121.96999
-de;[Sardines];0.79
+email;[orders];amountPaid;DateTimeOfOrder
+test;[Beans, Cheese Cake 1 x piece, Curd Cheese ];5.25;2021/12/06 21:01:36
+test;[Hummer 1kg];85.99;2021/12/06 21:02:53
+de;[Hummer 1kg, Chocolate];87.579994;2021/12/06 21:02:53

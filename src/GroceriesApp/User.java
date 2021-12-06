@@ -4,6 +4,7 @@ import GroceriesLists.Main;
 import GroceriesLists.Test;
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class User {
@@ -13,7 +14,9 @@ public class User {
     private Map<LocalDateTime,List<TempOrder>> orders= new HashMap<>();
     private Map<String,Map<LocalDateTime,List<TempOrder>>> allOrders= new HashMap<>();
 
-    LocalDateTime now = LocalDateTime.now();
+    static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    static LocalDateTime now = LocalDateTime.now();
+    //LocalDateTime now = LocalDateTime.now();
 
     //RA: this is a relative path for the Orders file - we need to change it later
     final File fOrders = new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath());
@@ -78,7 +81,7 @@ public class User {
                 eachBill.add(entry.getKey());
                 sum += entry.getValue();
             }
-            fileWriter.append(this.email+";"+Arrays.toString(eachBill.toArray())+";"+sum);
+            fileWriter.append(this.email+";"+Arrays.toString(eachBill.toArray())+";"+sum+";"+dtf.format(now));
 
             fileWriter.flush();
             fileWriter.close();
@@ -101,7 +104,7 @@ public class User {
                 String[] items=elements[1].replace("[","").replace("]","").split(",");
                 if (elements[0].equals(emailOfTheUser)){
                     check = true;
-                    System.out.println("You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0);
+                    System.out.println(elements[3]+" You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
                     totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
                 }
             }

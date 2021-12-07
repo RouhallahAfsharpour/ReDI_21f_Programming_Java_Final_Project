@@ -92,6 +92,19 @@ public class User {
 
     //RA: this part will read the orders for user from the file of orders
     public void readOrdersForUser(String emailOfTheUser) throws IOException {
+        System.out.println("enter 1 to see all orders, or enter 2 to see orders for a specific time period");
+        int seeOrdersOption = reader.nextInt();
+        String begDate="";
+        String endDate="";
+        if (seeOrdersOption==2){
+            //RA: error handling should be added!
+            System.out.println("please enter the beginning of the period in this form YYYY/MM/DD");
+            begDate = reader.nextLine();
+            begDate += reader.next();
+            System.out.println("please enter the end of the period in this form YYYY/MM/DD");
+            endDate = reader.nextLine();
+            endDate += reader.next();
+        }
         double totalPaid=0;
         boolean check = false;
         try {
@@ -102,14 +115,25 @@ public class User {
                 //This part should be corrected !
                 String[] elements = line.split(";");
                 String[] items=elements[1].replace("[","").replace("]","").split(",");
-                if (elements[0].equals(emailOfTheUser)){
-                    check = true;
-                    System.out.println(elements[3]+" You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
-                    totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
+                LocalDateTime dateTimeOfOrder = LocalDateTime.parse(elements[3],dtf);
+                if (seeOrdersOption==1){
+                    if (elements[0].equals(emailOfTheUser)){
+                        check = true;
+                        System.out.println(elements[3]+" You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
+                        totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
+                    }
+                } else if (seeOrdersOption==2){
+                    if (elements[0].equals(emailOfTheUser)
+                            && dateTimeOfOrder.isAfter(LocalDateTime.parse(begDate+" 00:00:01",dtf))
+                            && dateTimeOfOrder.isBefore(LocalDateTime.parse(endDate+" 23:59:59",dtf))){
+                        check = true;
+                        System.out.println(elements[3]+" You ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
+                        totalPaid+=Math.round(Double.parseDouble(elements[2])*100.0)/100.0;
+                    }
                 }
             }
             if (check==true){
-                System.out.println("You paid in total "+totalPaid+" $ ");
+                System.out.println("You paid in total "+Math.round(totalPaid*100.0)/100.0+" $ ");
             }else {
                 System.out.println("You have never ordered with us");
             }

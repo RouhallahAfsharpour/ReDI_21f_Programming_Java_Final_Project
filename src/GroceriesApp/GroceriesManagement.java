@@ -3,6 +3,7 @@ import GroceriesLists.Main;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GroceriesManagement {
 
@@ -195,24 +196,29 @@ public class GroceriesManagement {
     //RA: This is an area for admin
     public void adminArea() throws IOException {
         int adminChoice=0;
-        while (adminChoice!=5){
-            System.out.println("Please choose 1, 2, or 3 for:");
-            System.out.println("[1. See the list of users, 2.Make a user admin, 3. delete a user, 4.See the orders of a user, 5. Log out]");
+        String emailOfUser="";
+        boolean deleteUser=false;
+        List<Registration> listOfCurrentUsers = new ArrayList<>();
+        listOfCurrentUsers = read();
+        while (adminChoice!=6){
+            System.out.println("-------------------------------------");
+            System.out.println("Please choose 1, 2, 3, 4, 5 or 6 for:");
+            System.out.println("1. See the list of users"+"\n"+"2. Make a user admin"+"\n"+"3. delete a user"+"\n"+"4. See the orders of a user"+"\n"+"5. See the list of Orders based on popularity"+"\n"+"6. Log out");
             adminChoice = this.reader.nextInt();
             if (adminChoice==1){
                 System.out.println(read().toString());
             }else if(adminChoice==2 || adminChoice==3){
                 System.out.println("Please type the email of the user: ");
-                String emailOfUser = this.reader.nextLine();
+                emailOfUser = this.reader.nextLine();
                 emailOfUser += this.reader.next();
-                List<Registration> listOfCurrentUsers = read();
                 for (Registration registered : listOfCurrentUsers){
                     if (registered.getEmail().equals(emailOfUser)){
 
                         if (adminChoice==2){
                             registered.setUserType("admin");
                         } else if(adminChoice==3){
-                            listOfCurrentUsers.remove(registered);
+                            deleteUser=true;
+                            //listOfCurrentUsers.remove(registered);
                         }
                     }
                 }
@@ -224,8 +230,14 @@ public class GroceriesManagement {
                     fileWriter.append("email,password,firstName,lastName,address,userType");
                     fileWriter.append("\n");
                     for (Registration user : listOfCurrentUsers) {
-                        fileWriter.append(user.getEmail() + "," + user.getPassword() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getAddress() + "," + user.getUserType());
-                        fileWriter.append("\n");
+                        if (deleteUser==true && !user.getEmail().equals(emailOfUser)){
+                            fileWriter.append(user.getEmail() + "," + user.getPassword() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getAddress() + "," + user.getUserType());
+                            fileWriter.append("\n");
+                        }else if (deleteUser==false){
+                            fileWriter.append(user.getEmail() + "," + user.getPassword() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getAddress() + "," + user.getUserType());
+                            fileWriter.append("\n");
+                        }
+
                     }
                     fileWriter.flush();
                     fileWriter.close();
@@ -237,8 +249,10 @@ public class GroceriesManagement {
                 String emailOfTheUser = this.reader.nextLine();
                 emailOfTheUser += this.reader.next();
                 readOrders(emailOfTheUser);
+            } else if (adminChoice==5){
+                readAllOrders();
             } else {
-                adminChoice=5;
+                adminChoice=6;
             }
         }
 
@@ -249,6 +263,7 @@ public class GroceriesManagement {
     public void readOrders(String emailOfTheUser) throws IOException {
         double totalPaid=0;
         boolean check = false;
+        List<String[]> listOfAllOrders = new ArrayList<>();
         try {
             BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
             String firstLine = fileReader.readLine();
@@ -257,7 +272,7 @@ public class GroceriesManagement {
                 //RA: This part is for reading and putting the stuff in the array!
                 String[] elements = line.split(";");
                 String[] items=elements[1].replace("[","").replace("]","").split(",");
-
+                listOfAllOrders.add(items);
                 if (elements[0].equals(emailOfTheUser)){
                     check = true;
                     System.out.println(elements[3]+" "+elements[0]+" ordered "+items.length+" items: "+elements[1]+" and paid "+Math.round(Double.parseDouble(elements[2])*100.0)/100.0+" $ ");
@@ -274,7 +289,40 @@ public class GroceriesManagement {
         }
     }
 
-    //RA: one part for statistics should be added here:
-    //Map(email,(orders,totalpaid))...
+    //RA: This part is for statistics should be added here:
+    public void readAllOrders() throws IOException {
+        double totalPaid=0;
+        boolean check = false;
+        Set<String> setOfAllOrders = new HashSet<>();
+        Map<String,Integer> mapOfAllOrders = new HashMap<>();
+        try {
+            BufferedReader fileReader = new BufferedReader(new FileReader(this.pathOrders));
+            String firstLine = fileReader.readLine();
+            String line = "";
+            while ((line = fileReader.readLine()) != null) {
+                //RA: This part is for reading and putting the stuff in the array!
+                String[] elements = line.split(";");
+                String[] items=elements[1].replace("[","").replace("]","").split(",");
+                for (String item : items){
+                    if(!setOfAllOrders.contains(item)){
+                        mapOfAllOrders.put(item,1);
+                        setOfAllOrders.add(item);
+                    }else {
+                        mapOfAllOrders.put(item,mapOfAllOrders.get(item)+1);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //RA: loop the map and print all
+        List<String> ordersList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : mapOfAllOrders.entrySet()) {
+            ordersList.add(entry.getValue()+ " X " + entry.getKey());
+        }
+        List<String> sortedList = ordersList.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        sortedList.forEach(System.out::println);
+    }
 
 }

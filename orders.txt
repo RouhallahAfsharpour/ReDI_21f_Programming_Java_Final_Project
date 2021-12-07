@@ -1,4 +1,10 @@
 email;[orders];amountPaid;DateTimeOfOrder
-test;[Beans, Cheese Cake 1 x piece, Curd Cheese ];5.25;2021/12/06 21:01:36
+test;[Beans, Cheese Cake 1 x piece, Curd Cheese ];5.25;2021/11/26 21:01:36
+test;[Hummer 1kg];85.99;2021/12/06 21:02:53
+test;[Hummer 1kg];85.99;2021/11/06 21:02:53
 test;[Hummer 1kg];85.99;2021/12/06 21:02:53
 de;[Hummer 1kg, Chocolate];87.579994;2021/12/06 21:02:53
+sam@gmail.com;[Tonic Water, Thun Fish 1kg, Coca Cola ];51.25;2021/12/07 22:02:21
+sam@gmail.com;[Tonic Water, Skirt Steak 1kg, Turkey 1kg, Thun Fish 1kg, Salami 300g, Coca Cola , Cream Cheese , Milk (1.5 fatt)];107.29999;2021/12/07 22:02:21
+mike@yahoo.com;[Hummer 1kg, Rumpsteak 1kg, Tomato Sauce];192.48;2021/12/07 22:11:20
+mike@yahoo.com;[Hummer 1kg, Skirt Steak 1kg];127.67999;2021/12/07 22:16:29

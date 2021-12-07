@@ -9,10 +9,6 @@ public abstract class Groceris {
     // this is the Last List of chosen Groceries which the user chosed
    // List<Map<Groceris,Float>> shoppingCart = new ArrayList<>();
 
-   //  Map<Groceris,Float> shoppingCart = new HashMap<>();
-
-
-
 
     // the First properties of the Groceries
 
@@ -69,18 +65,18 @@ public abstract class Groceris {
     }
 
     // this method allows the User to choose between the Groceries and add them to the shopping cart
-    public  void addToshoppingCart(HashMap<Integer,Groceris> map){
+    public  void addToShoppingCart(HashMap<Integer,Groceris> map){
 
         // asking the user what he want to by
         System.out.println(" Please choose what you want to by : ");
         int num = this.sc.nextInt();
 
-        // when he chose something he will get the Information of the Grocerie he chosed
+        // when he chose something he will get the Information of the Grocer he choosed
         if(map.containsKey(num) ){
             System.out.println(map.get(num).infoToString()+ "\n");
 
-            // here he should decid if he want to by it and add it to the shopping cart or not
-            System.out.println("would you like to add this product to the shoping cart? (please choose a number 1 or 2 )\n" +
+            // here he should decide if he want to by it and add it to the shopping cart or not
+            System.out.println("would you like to add this product to the shopping cart? (please choose a number 1 or 2 )\n" +
                     "1. yes please \n" +
                     "2. no thanks \n");
             int choice = this.sc.nextInt();
@@ -89,7 +85,7 @@ public abstract class Groceris {
                 Test.shoppingCart.put(map.get(num).getName(),map.get(num).getPrice());
                 askUserAgain();
             }
-            // he press 2 it will ask hem if he want to chose another product
+            // he press 2 it will ask hem if he want to choose another product
             else{
                 askUserAgain();
             }
@@ -146,7 +142,7 @@ public abstract class Groceris {
     }
 
     // printing the Last Bill this method contains the current date
-    public static void printShoppingCart(){
+    public void printShoppingCart(){
 
 
 

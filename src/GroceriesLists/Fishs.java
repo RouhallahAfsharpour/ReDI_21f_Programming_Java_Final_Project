@@ -60,7 +60,7 @@ public class Fishs extends Groceris{
         printMap(listOfFishProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart( listOfFishProducts);
+        addToShoppingCart( listOfFishProducts);
     }
 
 

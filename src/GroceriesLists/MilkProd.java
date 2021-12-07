@@ -60,7 +60,7 @@ public class MilkProd extends Groceris{
         printMap(listOfMilkProducts);
 
         // ask the user and add to shopping cart
-         addToshoppingCart(listOfMilkProducts);
+         addToShoppingCart(listOfMilkProducts);
 
     }
 

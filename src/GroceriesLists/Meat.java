@@ -59,7 +59,7 @@ public class Meat extends Groceris{
         printMap(listOfMeatProducts);
 
         // ask the user and add to shopping cart
-        addToshoppingCart( listOfMeatProducts);
+        addToShoppingCart( listOfMeatProducts);
     }
 
 

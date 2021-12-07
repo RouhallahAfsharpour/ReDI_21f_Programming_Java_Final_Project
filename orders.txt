@@ -9,3 +9,4 @@ sam@gmail.com;[Tonic Water, Skirt Steak 1kg, Turkey 1kg, Thun Fish 1kg, Salami 3
 mike@yahoo.com;[Hummer 1kg, Rumpsteak 1kg, Tomato Sauce];192.48;2021/12/07 22:11:20
 mike@yahoo.com;[Hummer 1kg, Skirt Steak 1kg];127.67999;2021/12/07 22:16:29
 sam@gmail.com;[Hummer 1kg, Orange Juice];87.979996;2021/12/07 22:29:29
+test;[Turkey 1kg];9.99;2021/12/07 23:04:42

@@ -7,8 +7,8 @@ public class Category {
 
     static Scanner sc = new Scanner(System.in);
 
-    // inizializing the name of each category
-    public  static  String vegitables = " Vegetables ";
+    // initialising the name of each category
+    public  static  String vegetables = " Vegetables ";
     public  static  String milkProduction = " Milk Productions";
     public  static  String meat = " Meat ";
     public  static  String fish = " Fishs";
@@ -19,7 +19,7 @@ public class Category {
     Map<Integer,String> category = new HashMap<>();
 
 
-    // in the constructor the List will be inizialized
+    // in the constructor the List will be initialised
     public Category() {
         category = categoryToList();
     }
@@ -34,9 +34,9 @@ public class Category {
         System.out.println(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~ \n");
     }
 
-    // this method adds all categorys to the List
+    // this method adds all categories to the List
     private Map<Integer,String> categoryToList(){
-        category.put(1,vegitables);
+        category.put(1, vegetables);
         category.put(2,milkProduction);
         category.put(3,meat);
         category.put(4,fish);
@@ -48,7 +48,7 @@ public class Category {
     }
 
     public String getVegitables() {
-        return vegitables;
+        return vegetables;
     }
 
     public String getMilkProduction() {
@@ -75,7 +75,7 @@ public class Category {
         return cannedFood;
     }
 
-    // this method allows the user to chose the category of product and then the chosed category will be printed and it will run its process
+    // this method allows the user to choose the category of product and then the choosed category will be printed and it will run its process
     public static void runCategory(){
         System.out.println(" please chose the category that you want to by from : ( please enter a number )");
         int choice = sc.nextInt();

@@ -1,7 +1,6 @@
 package GroceriesLists;
 
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class Vegetables extends Groceris {
@@ -27,13 +26,13 @@ public class Vegetables extends Groceris {
 
     public List<Groceris> addToTheList(){
 
-        Vegetables tomato = new Vegetables("Tomato", Category.vegitables , 1.99f, new Date(121,11,10),   new Date(121,11,25) , 189f);
-        Vegetables cucumber =  new Vegetables("Cucumber", Category.vegitables  , 1.09f,   new Date(121, 3, 11),   new Date(121, 11, 29) , 159f);
-        Vegetables potato = new Vegetables("Potato", Category.vegitables  , 2.09f,   new Date(121,5,11),   new Date(121,2,12) , 359f);
-        Vegetables lettuce =  new Vegetables("Lettuce", Category.vegitables  , 1.29f,   new Date(121,11,21),   new Date(121,12,21) , 69f);
-        Vegetables paprika = new Vegetables("Paprika", Category.vegitables  , 1.69f,   new Date(121,11,7),   new Date(121,12,30) , 239f);
-        Vegetables sweetChilli =  new Vegetables("Sweet Chilli (Bio)", Category.vegitables  , 3.19f,   new Date(121,11,5),   new Date(121,12,7) , 129f);
-        Vegetables lemon = new Vegetables("Lemon (Bio)", Category.vegitables  , 1.89f,   new Date(121,11,2),   new Date(121,12,15) , 201f);
+        Vegetables tomato = new Vegetables("Tomato", Category.vegetables, 1.99f, new Date(121,11,10),   new Date(121,11,25) , 189f);
+        Vegetables cucumber =  new Vegetables("Cucumber", Category.vegetables, 1.09f,   new Date(121, 3, 11),   new Date(121, 11, 29) , 159f);
+        Vegetables potato = new Vegetables("Potato", Category.vegetables, 2.09f,   new Date(121,5,11),   new Date(121,2,12) , 359f);
+        Vegetables lettuce =  new Vegetables("Lettuce", Category.vegetables, 1.29f,   new Date(121,11,21),   new Date(121,12,21) , 69f);
+        Vegetables paprika = new Vegetables("Paprika", Category.vegetables, 1.69f,   new Date(121,11,7),   new Date(121,12,30) , 239f);
+        Vegetables sweetChilli =  new Vegetables("Sweet Chilli (Bio)", Category.vegetables, 3.19f,   new Date(121,11,5),   new Date(121,12,7) , 129f);
+        Vegetables lemon = new Vegetables("Lemon (Bio)", Category.vegetables, 1.89f,   new Date(121,11,2),   new Date(121,12,15) , 201f);
 
         this.vegiList.add(tomato);
         this.vegiList.add(cucumber);
@@ -70,7 +69,7 @@ public class Vegetables extends Groceris {
         printMap(listOfVegetables);
 
         // ask the user and add to shopping cart
-        addToshoppingCart( listOfVegetables);
+        addToShoppingCart( listOfVegetables);
 
 
         //  printList(super.shoppingCart);

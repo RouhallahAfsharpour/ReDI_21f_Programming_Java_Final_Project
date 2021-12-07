@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class Test{
 
-    // this Map stors all the chosen Groceries. I had to nake it like this unfotunately becyuse it doesn't work anyway.
-   public static Map<String,Float> shoppingCart = new HashMap<>();
+    // this Map stores all the chosen Groceries. I had to make it like this unfortunately because it doesn't work anyway.
+    public static Map<String,Float> shoppingCart = new HashMap<>();
 
     public static void launchCategorys() {
           Category c = new Category();

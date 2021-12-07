@@ -62,7 +62,7 @@ public class CannedFood extends Groceris{
 
         // ask the user and add to shopping cart
         //addToshoppingCart(CannedFoodShoppingCart, listOfDrinksProducts);
-        addToshoppingCart(listOfDrinksProducts);
+        addToShoppingCart(listOfDrinksProducts);
 
     }
 

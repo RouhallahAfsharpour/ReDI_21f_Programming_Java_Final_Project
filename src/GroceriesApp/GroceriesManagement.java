@@ -237,7 +237,6 @@ public class GroceriesManagement {
                             fileWriter.append(user.getEmail() + "," + user.getPassword() + "," + user.getFirstName() + "," + user.getLastName() + "," + user.getAddress() + "," + user.getUserType());
                             fileWriter.append("\n");
                         }
-
                     }
                     fileWriter.flush();
                     fileWriter.close();
@@ -255,8 +254,6 @@ public class GroceriesManagement {
                 adminChoice=6;
             }
         }
-
-
     }
 
     //RA: this method reads all orders stored in orders.txt file and put them in a list
@@ -282,7 +279,7 @@ public class GroceriesManagement {
             if (check==true){
                 System.out.println(emailOfTheUser+" paid in total "+totalPaid+" $ ");
             }else {
-                System.out.println("the typed email is not correct!");
+                System.out.println("nothing was found for this email!");
             }
         } catch (IOException e) {
             e.printStackTrace();

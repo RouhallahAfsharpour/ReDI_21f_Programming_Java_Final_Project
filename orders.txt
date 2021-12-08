@@ -10,7 +10,9 @@ mike@yahoo.com;[Hummer 1kg, Rumpsteak 1kg, Tomato Sauce];192.48;2021/12/07 22:11
 mike@yahoo.com;[Hummer 1kg, Skirt Steak 1kg];127.67999;2021/12/07 22:16:29
 sam@gmail.com;[Hummer 1kg, Orange Juice];87.979996;2021/12/07 22:29:29
 test;[Turkey 1kg];9.99;2021/12/07 23:04:42
+q;[Mozzarella Cheese , Tomato];2.68;2021/12/08 14:04:56
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Tomato];43.68;2021/12/08 13:38:23
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Cheese Cake 1 x piece, Rumpsteak 1kg, Tomato, Salami 300g];154.24002;2021/12/08 13:38:23
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Cheese Cake 1 x piece, Chocolate, Rumpsteak 1kg, Snickers 1 x package, Tomato, Salami 300g];157.82002;2021/12/08 13:38:23
 max.mustermann@yahoo.com;[Parmazan Cheese , Skirt Steak 1kg, Cheese Cake 1 x piece, Chocolate, Rumpsteak 1kg, Snickers 1 x package, Tomato, Salami 300g];159.51001;2021/12/08 13:38:23
+lu@g;[Sweet Chilli (Bio)];3.19;2021/12/08 19:52:01

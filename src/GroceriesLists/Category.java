@@ -77,10 +77,14 @@ public class Category {
 
     // this method allows the user to choose the category of product and then the choosed category will be printed and it will run its process
     public static void runCategory(){
-        System.out.println(" please choose the category that you want to buy from : ( please enter a number )");
+        System.out.println(" please choose the category that you want to buy from or press 0 to end and go to the Bill : ( please enter a number )");
         int choice = sc.nextInt();
 
         switch (choice){
+            case 0:
+                Groceris.printShoppingCart();
+                break;
+
             case 1:
                 Vegetables vegetables = new Vegetables();
                 vegetables.run();

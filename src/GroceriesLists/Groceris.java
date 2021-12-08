@@ -142,7 +142,7 @@ public abstract class Groceris {
     }
 
     // printing the Last Bill this method contains the current date
-    public void printShoppingCart(){
+    public static void printShoppingCart(){
 
 
 

@@ -118,12 +118,9 @@ public class GroceriesManagement {
 
     //RA: for registering and storing the user data in file
     public void registerNewUser(Registration reg){
-        try {
-            FileWriter fileWriter = new FileWriter(this.path,true);
-            fileWriter.append("\n");
+        try ( FileWriter fileWriter = new FileWriter(this.path,true)){
             fileWriter.append(reg.getEmail()+","+reg.getPassword()+","+reg.getFirstName()+","+reg.getLastName()+","+reg.getAddress()+","+reg.getUserType());
-            fileWriter.flush();
-            fileWriter.close();
+            fileWriter.append("\n");
             System.out.println("registered successfully");
         } catch (IOException e) {
             e.getMessage();

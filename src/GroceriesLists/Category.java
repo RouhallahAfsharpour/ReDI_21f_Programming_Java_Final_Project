@@ -9,9 +9,9 @@ public class Category {
 
     // initialising the name of each category
     public  static  String vegetables = " Vegetables ";
-    public  static  String milkProduction = " Milk Productions";
+    public  static  String milkProduction = " Dairy Product";
     public  static  String meat = " Meat ";
-    public  static  String fish = " Fishs";
+    public  static  String fish = " Fishes";
     public  static  String sweets = " Sweets";
     public  static  String drinks = " Drinks";
     public  static String cannedFood = " Canned Food";
@@ -26,7 +26,7 @@ public class Category {
 
     public void printCategorys(){
         System.out.println("\n ~~~~~~~~~~~~~~~~~~~~~~~~~~~  ");
-        System.out.println("      GROCERIE'S CATEGORYS");
+        System.out.println("      GROCERY CATEGORIES");
         System.out.println(" ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ");
         for (Map.Entry<Integer,String> elm : category.entrySet()) {
             System.out.println("       "+elm.getKey() + " . "+ elm.getValue());
@@ -77,7 +77,7 @@ public class Category {
 
     // this method allows the user to choose the category of product and then the choosed category will be printed and it will run its process
     public static void runCategory(){
-        System.out.println(" please chose the category that you want to by from : ( please enter a number )");
+        System.out.println(" please choose the category that you want to buy from : ( please enter a number )");
         int choice = sc.nextInt();
 
         switch (choice){

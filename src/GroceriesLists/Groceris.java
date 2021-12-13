@@ -148,7 +148,7 @@ public abstract class Groceris {
 
         System.out.println("\n\n_________________________________________________ \n\n");
         System.out.println("      . . . . . . . ");
-        System.out.println("      :   Bill    :      " + " current date : " + dtf.format(now));
+        System.out.println("      :  Invoice  :      " + " current date : " + dtf.format(now));
         System.out.println("      . . . . . . . ");
         System.out.println(" \n ____________________ \n");
         System.out.println();

@@ -38,6 +38,7 @@ public class Login {
                 return -1;
             }
         }
+        System.out.println("This Email is not registered, please register as new!");
         return -1;
     }
 }

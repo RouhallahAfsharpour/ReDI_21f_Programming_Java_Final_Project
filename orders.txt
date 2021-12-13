@@ -14,5 +14,8 @@ q;[Mozzarella Cheese , Tomato];2.68;2021/12/08 14:04:56
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Tomato];43.68;2021/12/08 13:38:23
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Cheese Cake 1 x piece, Rumpsteak 1kg, Tomato, Salami 300g];154.24002;2021/12/08 13:38:23
 max.mustermann@yahoo.com;[Skirt Steak 1kg, Cheese Cake 1 x piece, Chocolate, Rumpsteak 1kg, Snickers 1 x package, Tomato, Salami 300g];157.82002;2021/12/08 13:38:23
-max.mustermann@yahoo.com;[Parmazan Cheese , Skirt Steak 1kg, Cheese Cake 1 x piece, Chocolate, Rumpsteak 1kg, Snickers 1 x package, Tomato, Salami 300g];159.51001;2021/12/08 13:38:23
+max.mustermann@yahoo.com;[Parmazan Cheese , Skirt Steak 1kg, Cheese Cake 1 x piece, Chocolate, Rumpsteak 1kg, Snickers 1 x package, Tomato, Salami 300g];159.51001;2021/12/09 13:38:23
 lu@g;[Sweet Chilli (Bio)];3.19;2021/12/08 19:52:01
+sina;[Mozzarella Cheese , Billy Bass 1kg, Rumpsteak 1kg];143.38;2021/12/13 20:10:29
+sina;[Mozzarella Cheese , Billy Bass 1kg, Hummer 1kg, Rumpsteak 1kg];229.37;2021/12/13 20:10:29
+max.mustermann@yahoo.com;[Cheese Cake 1 x piece, Chicken Breast 1kg];8.96;2021/12/13 20:18:20
